@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowRight,
@@ -55,11 +55,26 @@ const ownershipPoints = [
 ];
 
 const journey = [
-  "Idea",
-  "Plan",
-  "Build",
-  "Manage",
-  "Report",
+  {
+    title: "Idea",
+    text: "We identify a practical business direction that fits your goals.",
+  },
+  {
+    title: "Plan",
+    text: "We shape the model, roadmap, structure, and launch priorities.",
+  },
+  {
+    title: "Build",
+    text: "We coordinate the setup, systems, and execution needed to launch.",
+  },
+  {
+    title: "Manage",
+    text: "We support operations professionally and keep the business moving.",
+  },
+  {
+    title: "Report",
+    text: "You stay informed through clear updates and performance direction.",
+  },
 ];
 
 const trustPoints = [
@@ -143,7 +158,23 @@ const faqs = [
 
 function App() {
   const [activeConcept, setActiveConcept] = useState(0);
+  const [activeJourney, setActiveJourney] = useState(0);
   const currentConcept = ventureConcepts[activeConcept];
+
+  useEffect(() => {
+    const journeyTimer = window.setInterval(() => {
+      setActiveJourney((index) => (index === journey.length - 1 ? 0 : index + 1));
+    }, 2600);
+
+    const conceptTimer = window.setInterval(() => {
+      setActiveConcept((index) => (index === ventureConcepts.length - 1 ? 0 : index + 1));
+    }, 4200);
+
+    return () => {
+      window.clearInterval(journeyTimer);
+      window.clearInterval(conceptTimer);
+    };
+  }, []);
 
   const showPreviousConcept = () => {
     setActiveConcept((index) => (index === 0 ? ventureConcepts.length - 1 : index - 1));
@@ -242,10 +273,17 @@ function App() {
           </div>
           <div className="journey-track" aria-label="Business ownership journey">
             {journey.map((step, index) => (
-              <div className="journey-step" key={step}>
+              <button
+                type="button"
+                className={`journey-step ${index === activeJourney ? "active" : ""}`}
+                key={step.title}
+                onClick={() => setActiveJourney(index)}
+                aria-current={index === activeJourney ? "step" : undefined}
+              >
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{step}</strong>
-              </div>
+                <strong>{step.title}</strong>
+                <p>{step.text}</p>
+              </button>
             ))}
           </div>
         </div>

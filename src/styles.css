@@ -392,11 +392,27 @@ h2 {
   align-content: center;
   gap: 12px;
   padding: 24px;
+  border: 0;
   border-right: 1px solid var(--line);
+  background: var(--white);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .journey-step:last-child {
   border-right: 0;
+}
+
+.journey-step::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: transparent;
+  content: "";
 }
 
 .journey-step span {
@@ -408,6 +424,38 @@ h2 {
 .journey-step strong {
   color: var(--ink);
   font-size: 1.28rem;
+}
+
+.journey-step p {
+  display: none;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.journey-step.active {
+  z-index: 1;
+  background: #101820;
+  box-shadow: 0 22px 54px rgba(16, 24, 32, 0.16);
+  transform: translateY(-4px);
+}
+
+.journey-step.active::before {
+  background: linear-gradient(90deg, var(--gold), var(--teal));
+}
+
+.journey-step.active span {
+  color: var(--gold-soft);
+}
+
+.journey-step.active strong,
+.journey-step.active p {
+  color: var(--white);
+}
+
+.journey-step.active p {
+  display: block;
 }
 
 .trust-section {
@@ -798,6 +846,7 @@ h2 {
   .journey-track {
     grid-template-columns: repeat(5, minmax(150px, 1fr));
     overflow-x: auto;
+    padding: 4px;
   }
 
   .trust-grid,
@@ -951,6 +1000,7 @@ h2 {
   .journey-track {
     grid-template-columns: 1fr;
     overflow: visible;
+    padding: 0;
   }
 
   .journey-step {
@@ -958,6 +1008,14 @@ h2 {
     border-right: 0;
     border-bottom: 1px solid var(--line);
     padding: 20px;
+  }
+
+  .journey-step p {
+    display: block;
+  }
+
+  .journey-step.active {
+    transform: none;
   }
 
   .journey-step:last-child {
