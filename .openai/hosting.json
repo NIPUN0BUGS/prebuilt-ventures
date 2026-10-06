@@ -1,6 +1,5 @@
 {
   "project_id": "appgprj_6ac49bc9327081919b0325dc4b90b9e6",
-  "expected_url": "https://prebuilt-ventures.round-dream-8186.chatgpt.site",
   "static": {
     "directory": "dist"
   }
