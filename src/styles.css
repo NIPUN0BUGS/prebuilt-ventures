@@ -359,6 +359,15 @@ h2 {
   font-size: 0.92rem;
 }
 
+.site-footer a {
+  color: var(--teal-dark);
+  font-weight: 800;
+}
+
+.site-footer a:hover {
+  color: var(--teal);
+}
+
 @media (max-width: 940px) {
   .site-header {
     inset: 12px auto auto 50%;

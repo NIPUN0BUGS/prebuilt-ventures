@@ -181,8 +181,17 @@ function App() {
       </section>
 
       <footer className="site-footer">
-        <span>Pre-built Ventures</span>
-        <span>Welcome to a smarter way of business ownership.</span>
+        <span>© 2026 Pre-built Ventures</span>
+        <span>
+          Designed by{" "}
+          <a
+            href="https://www.linkedin.com/in/nipun-samarakoon-bb812b203/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Nipun Samarakoon
+          </a>
+        </span>
       </footer>
     </main>
   );
