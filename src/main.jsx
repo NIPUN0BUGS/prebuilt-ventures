@@ -52,6 +52,66 @@ const ownershipPoints = [
   "Clear owner communication",
 ];
 
+const journey = [
+  "Idea",
+  "Plan",
+  "Build",
+  "Manage",
+  "Report",
+];
+
+const trustPoints = [
+  {
+    title: "For Busy Owners",
+    text: "Designed for people who want business ownership without handling every operational detail themselves.",
+  },
+  {
+    title: "Structured Execution",
+    text: "Every venture is approached with a clear plan, implementation roadmap, and operational rhythm.",
+  },
+  {
+    title: "Transparent Direction",
+    text: "Owners stay aligned through communication, reporting, and strategic decision checkpoints.",
+  },
+];
+
+const packages = [
+  {
+    name: "Idea + Plan",
+    description: "For owners who need a validated business direction and a practical launch roadmap.",
+    items: ["Business concept", "Structured plan", "Launch path"],
+  },
+  {
+    name: "Build + Launch",
+    description: "For owners ready to move from planning into setup, implementation, and market entry.",
+    items: ["Business setup", "Systems coordination", "Launch support"],
+  },
+  {
+    name: "Full Management",
+    description: "For owners who want the business built, managed, and improved with professional oversight.",
+    items: ["Operations management", "Performance tracking", "Owner reporting"],
+  },
+];
+
+const faqs = [
+  {
+    question: "Who owns the business?",
+    answer: "You own the business. Pre-built Ventures supports the strategy, build, implementation, and management process.",
+  },
+  {
+    question: "Can I choose the business type?",
+    answer: "Yes. The process starts with your goals, preferred direction, and the type of ownership model that fits you.",
+  },
+  {
+    question: "Do you manage daily operations?",
+    answer: "Yes. Professional management support can be included so owners can stay informed without carrying every daily task.",
+  },
+  {
+    question: "How do I start?",
+    answer: "Start with a WhatsApp conversation. We discuss your goals, then recommend the most suitable next step.",
+  },
+];
+
 function App() {
   return (
     <main>
@@ -134,6 +194,41 @@ function App() {
         </div>
       </section>
 
+      <section className="journey-section" aria-labelledby="journey-title">
+        <div className="section-inner">
+          <div className="section-heading compact-heading">
+            <p className="section-kicker">The Ownership Journey</p>
+            <h2 id="journey-title">A clear path from idea to managed business</h2>
+          </div>
+          <div className="journey-track" aria-label="Business ownership journey">
+            {journey.map((step, index) => (
+              <div className="journey-step" key={step}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{step}</strong>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="trust-section" aria-labelledby="trust-title">
+        <div className="section-inner">
+          <div className="section-heading">
+            <p className="section-kicker">Why Owners Choose Us</p>
+            <h2 id="trust-title">Built for ownership, not operational stress</h2>
+          </div>
+          <div className="trust-grid">
+            {trustPoints.map((point) => (
+              <article className="trust-card" key={point.title}>
+                <ShieldCheck size={24} aria-hidden="true" />
+                <h3>{point.title}</h3>
+                <p>{point.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="services-section" id="services" aria-labelledby="services-title">
         <div className="section-inner">
           <div className="section-heading">
@@ -153,6 +248,37 @@ function App() {
                 </article>
               );
             })}
+          </div>
+          <div className="section-cta">
+            <a className="primary-action" href={whatsappHref} target="_blank" rel="noreferrer">
+              Discuss my business plan
+              <ArrowRight size={19} aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="packages-section" aria-labelledby="packages-title">
+        <div className="section-inner">
+          <div className="section-heading">
+            <p className="section-kicker">Service Options</p>
+            <h2 id="packages-title">Choose the level of support you need</h2>
+          </div>
+          <div className="package-grid">
+            {packages.map((item) => (
+              <article className="package-card" key={item.name}>
+                <h3>{item.name}</h3>
+                <p>{item.description}</p>
+                <ul>
+                  {item.items.map((feature) => (
+                    <li key={feature}>
+                      <CheckCircle2 size={17} aria-hidden="true" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -175,6 +301,23 @@ function App() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section className="faq-section" aria-labelledby="faq-title">
+        <div className="section-inner faq-layout">
+          <div>
+            <p className="section-kicker">Questions Owners Ask</p>
+            <h2 id="faq-title">Clear answers before you begin</h2>
+          </div>
+          <div className="faq-list">
+            {faqs.map((item) => (
+              <details key={item.question}>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
