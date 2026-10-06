@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowRight,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   ClipboardList,
   Lightbulb,
   MessageCircle,
@@ -93,6 +95,33 @@ const packages = [
   },
 ];
 
+const ventureConcepts = [
+  {
+    title: "Cloud Kitchen",
+    category: "Food Venture",
+    text: "A delivery-first food brand built around focused menus, efficient operations, and measurable demand.",
+    fit: "Best for owners interested in food without a traditional dine-in model.",
+  },
+  {
+    title: "Online Store",
+    category: "Digital Commerce",
+    text: "A structured e-commerce business with product direction, launch setup, and operating support.",
+    fit: "Best for owners who want a scalable digital business model.",
+  },
+  {
+    title: "Service Business",
+    category: "Local Services",
+    text: "A practical service-based venture with clear customer acquisition, delivery process, and management systems.",
+    fit: "Best for owners who prefer stable, repeatable operations.",
+  },
+  {
+    title: "Rental Business",
+    category: "Asset Model",
+    text: "A venture model built around acquiring, marketing, managing, and tracking income-generating assets.",
+    fit: "Best for owners interested in asset-backed business ownership.",
+  },
+];
+
 const faqs = [
   {
     question: "Who owns the business?",
@@ -113,6 +142,17 @@ const faqs = [
 ];
 
 function App() {
+  const [activeConcept, setActiveConcept] = useState(0);
+  const currentConcept = ventureConcepts[activeConcept];
+
+  const showPreviousConcept = () => {
+    setActiveConcept((index) => (index === 0 ? ventureConcepts.length - 1 : index - 1));
+  };
+
+  const showNextConcept = () => {
+    setActiveConcept((index) => (index === ventureConcepts.length - 1 ? 0 : index + 1));
+  };
+
   return (
     <main>
       <header className="site-header" aria-label="Primary navigation">
@@ -279,6 +319,51 @@ function App() {
                 </ul>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="concepts-section" aria-labelledby="concepts-title">
+        <div className="section-inner concepts-layout">
+          <div>
+            <p className="section-kicker">Business Opportunities</p>
+            <h2 id="concepts-title">Explore venture concepts we can shape for you</h2>
+            <p>
+              These examples help owners imagine what can be built. The right business direction
+              is selected after understanding your goals, budget, and preferred involvement.
+            </p>
+          </div>
+          <div className="concept-carousel" aria-live="polite">
+            <div className="concept-card">
+              <span>{currentConcept.category}</span>
+              <h3>{currentConcept.title}</h3>
+              <p>{currentConcept.text}</p>
+              <strong>{currentConcept.fit}</strong>
+              <a className="concept-action" href={whatsappHref} target="_blank" rel="noreferrer">
+                Discuss this idea
+                <ArrowRight size={18} aria-hidden="true" />
+              </a>
+            </div>
+            <div className="carousel-controls" aria-label="Venture concept carousel controls">
+              <button type="button" onClick={showPreviousConcept} aria-label="Previous venture concept">
+                <ChevronLeft size={20} aria-hidden="true" />
+              </button>
+              <div className="carousel-dots" aria-label="Venture concept slides">
+                {ventureConcepts.map((concept, index) => (
+                  <button
+                    type="button"
+                    key={concept.title}
+                    className={index === activeConcept ? "active" : ""}
+                    onClick={() => setActiveConcept(index)}
+                    aria-label={`Show ${concept.title}`}
+                    aria-current={index === activeConcept ? "true" : undefined}
+                  />
+                ))}
+              </div>
+              <button type="button" onClick={showNextConcept} aria-label="Next venture concept">
+                <ChevronRight size={20} aria-hidden="true" />
+              </button>
+            </div>
           </div>
         </div>
       </section>

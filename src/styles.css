@@ -292,6 +292,7 @@ h1 {
 .trust-section,
 .services-section,
 .packages-section,
+.concepts-section,
 .process-section,
 .faq-section,
 .contact-section {
@@ -534,6 +535,131 @@ h2 {
   color: var(--teal);
 }
 
+.concepts-section {
+  background:
+    linear-gradient(135deg, rgba(0, 109, 102, 0.08), rgba(196, 145, 63, 0.1)),
+    #f7f8f5;
+}
+
+.concepts-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: 64px;
+  align-items: center;
+}
+
+.concepts-layout > div:first-child p:not(.section-kicker) {
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.75;
+}
+
+.concept-carousel {
+  display: grid;
+  gap: 16px;
+}
+
+.concept-card {
+  min-height: 390px;
+  padding: 34px;
+  border: 1px solid rgba(16, 24, 32, 0.12);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.concept-card span {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.concept-card h3 {
+  margin-bottom: 16px;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.concept-card p {
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.75;
+}
+
+.concept-card strong {
+  display: block;
+  margin: 24px 0;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.concept-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 8px;
+  background: var(--teal-dark);
+  color: var(--white);
+  font-weight: 900;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.concept-action:hover {
+  background: var(--teal);
+  transform: translateY(-1px);
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.carousel-controls button {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--teal-dark);
+  cursor: pointer;
+}
+
+.carousel-controls button:hover {
+  border-color: rgba(0, 109, 102, 0.35);
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.carousel-dots button {
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(16, 24, 32, 0.22);
+  padding: 0;
+}
+
+.carousel-dots button.active {
+  width: 28px;
+  background: var(--gold);
+}
+
 .process-section {
   background:
     linear-gradient(135deg, rgba(0, 109, 102, 0.12), transparent 46%),
@@ -679,6 +805,11 @@ h2 {
     grid-template-columns: 1fr;
   }
 
+  .concepts-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
   .package-card {
     min-height: auto;
   }
@@ -798,6 +929,7 @@ h2 {
   .trust-section,
   .services-section,
   .packages-section,
+  .concepts-section,
   .process-section,
   .faq-section,
   .contact-section {
@@ -839,6 +971,20 @@ h2 {
 
   .section-cta .primary-action {
     width: 100%;
+  }
+
+  .concept-card {
+    min-height: auto;
+    padding: 28px;
+  }
+
+  .concept-card h3 {
+    font-size: 2rem;
+  }
+
+  .concept-action {
+    width: 100%;
+    justify-content: center;
   }
 
   .contact-panel {
