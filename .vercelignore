@@ -1,0 +1,6 @@
+tmp
+dist
+node_modules
+site-version.tar
+.git
+.qodo
