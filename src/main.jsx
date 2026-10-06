@@ -46,6 +46,12 @@ const process = [
   "Build, launch, manage, and report with disciplined execution.",
 ];
 
+const ownershipPoints = [
+  "Strategic planning before execution",
+  "Professional operating support",
+  "Clear owner communication",
+];
+
 function App() {
   return (
     <main>
@@ -110,11 +116,21 @@ function App() {
             <p className="section-kicker">Smarter Ownership</p>
             <h2>You own the business. We build and manage it strategically.</h2>
           </div>
-          <p>
-            Pre-built Ventures helps aspiring owners move from intention to execution with a
-            professionally structured, implemented, and managed business. The offer is simple:
-            reduce the friction of starting while keeping ownership clear.
-          </p>
+          <div className="ownership-panel">
+            <p>
+              Pre-built Ventures helps aspiring owners move from intention to execution with a
+              professionally structured, implemented, and managed business. The offer is simple:
+              reduce the friction of starting while keeping ownership clear.
+            </p>
+            <ul aria-label="Ownership model highlights">
+              {ownershipPoints.map((point) => (
+                <li key={point}>
+                  <CheckCircle2 size={18} aria-hidden="true" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
