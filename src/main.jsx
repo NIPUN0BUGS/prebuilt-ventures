@@ -2,7 +2,6 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowRight,
-  BriefcaseBusiness,
   CheckCircle2,
   ClipboardList,
   Lightbulb,
@@ -181,7 +180,7 @@ function App() {
       </section>
 
       <footer className="site-footer">
-        <span>© 2026 Pre-built Ventures</span>
+        <span>&copy; 2026 Pre-built Ventures</span>
         <span>
           Designed by{" "}
           <a
